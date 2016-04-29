@@ -23,7 +23,10 @@ class StylusCompiler {
     if (cfg == null) cfg = {};
     this.rootPath = cfg.paths.root;
     this.config = cfg.plugins && cfg.plugins.stylus || {};
-    this.getDependencies = progeny({rootPath: this.rootPath});
+    this.getDependencies = progeny({
+      rootPath: this.rootPath,
+      reverseArgs: true
+    });
     this.modules = this.config.modules || this.config.cssModules;
     delete this.config.modules;
     delete this.config.cssModules;
